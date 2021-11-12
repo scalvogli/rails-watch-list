@@ -1,0 +1,16 @@
+<div class="container">
+  <h1><%= @list.name.capitalize %></h1>
+  <ul>
+    <li><%= link_to "Add a bookmark", new_list_bookmark_path(@list) %></li>
+    <li><%= link_to "Back to All lists", lists_path %></li>
+  </ul>
+  <div class="row my-3"></div>
+  <% @list.bookmarks.each do |bookmark| %>
+    <ul>
+      <strong><li><%= bookmark.movie.title %></li>
+      <li><%= bookmark.movie.rating %></li><i class="fas fa-star star-yellow"></i></strong>
+      <li><%= bookmark.movie.overview %> - <%= link_to "delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure you want to remove" } %></small></li>
+    </ul>
+  <% end %>
+
+</div>
